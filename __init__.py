@@ -19,7 +19,11 @@ def index():
     sat = int(a['771'][5][1])
     sun = int(a['771'][6][1])
     layout = go.Layout(title='Ayasli Ges Power Output')
-    my_plot_div = plot([go.Bar(x=['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], y=[mon, tue, wed, thu, fri, sat, sun],opacity=0.6 )], output_type='div')
+    trace0 = go.Bar(x=['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], y=[mon, tue, wed, thu, fri, sat, sun],opacity=0.6 )
+    data = [trace0]
+    fig = go.Figure(data=data, layout=layout)
+    my_plot_div = plot(fig, output_type='div')
+
     return render_template('index.html',div_placeholder= Markup(my_plot_div))
 
 if __name__ == '__main__':
