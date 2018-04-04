@@ -1,9 +1,47 @@
 <html>
 <body>
-<div style="position: absolute; top:20 px; left:20px; width: 728px; height: 728px;">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<style>
+ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+  }
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover {
+      background-color: #111;
+  }
+  </style>
+<img src="{{url_for('static', filename='Metu_powerlab.gif')}}" width=700px alt="HTML5 Icon">
+<ul>
+  <li><a href="{{ url_for('index') }}">Main page</a></li>
+  <li><a href="{{ url_for('year') }}">Year</a></li>
+  <li><a href="{{ url_for('month') }}">Month</a></li>
+</ul>
+<div style="position:absolute; top:185px; left:20px; width: 500px; height: 500px;">
 {{ div_placeholder }}
 </div>
-<div style="position: absolute; top:20 px; left:750px ; width: 1000px; height: 728px;">
+<div style="position:absolute; top:300px; left:500px;">
+<img src="{{url_for('static', filename='resim.jpg')}}" width=200px alt="HTML5 Icon">
+</div>
+<div style="position:absolute; top:500px; left:530px;">
+  <h5> Current value is {{ value }} Wh<h5>
+</div>
+<div style="position:absolute; top:185px; left:720px ; width: 680px; height: 500px;">
 {{ div_placeholder2 }}
 </div>
 </body>

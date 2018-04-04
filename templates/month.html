@@ -1,0 +1,38 @@
+<html>
+<body>
+<img src="{{url_for('static', filename='Metu_powerlab.gif')}}" width=700px alt="HTML5 Icon">
+<style>
+ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+  }
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover {
+      background-color: #111;
+  }
+  </style>
+<ul>
+  <li><a href="{{ url_for('index') }}">Main page</a></li>
+  <li><a href="{{ url_for('year') }}">Year</a></li>
+  <li><a href="{{ url_for('month') }}">Month</a></li>
+</ul>
+<div>
+{{ div_placeholder }}
+</div>
+</body>
+</html>
