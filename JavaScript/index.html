@@ -1,18 +1,40 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Ayasli</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <script>
-    function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", '144.122.124.168:5000', false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
+ function postAjax(url, data, success) {
+  var params = typeof data == 'string' ? data : Object.keys(data).map(
+          function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+      ).join('&');
+
+  var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+  xhr.open('POST', url);
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+  };
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.send(params);
+  return xhr;
 }
-</script>
+
+// example request
+$.get({
+    method: 'GET',
+    url: 'http://144.122.167.229/getjp',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    // query parameters go under "data" as an Object
+    data: {"867":{"0":null}}
+});
+
+// example request with data object
+//postAjax('http://144.122.167.229/getjp', {"867":{"0":null}}, function(data){ console.log(data); });
+    </script>
   </body>
 </html>
